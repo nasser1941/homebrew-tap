@@ -46,8 +46,9 @@ jobs:
       - uses: actions/download-artifact@v8
         with:
           name: formula
-          path: formula
-      - run: cp formula/lcode.rb "$(brew --repository nasser1941/tap)/Formula/lcode.rb"
+          # Not "formula/": macOS file names ignore case, so that would be the tap's own Formula folder.
+          path: ${{ runner.temp }}/new-formula
+      - run: cp "$RUNNER_TEMP/new-formula/lcode.rb" "$(brew --repository nasser1941/tap)/Formula/lcode.rb"
       - run: brew trust --formula nasser1941/tap/lcode
       - run: brew install --build-from-source nasser1941/tap/lcode
       - run: brew test nasser1941/tap/lcode
