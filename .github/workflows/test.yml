@@ -1,0 +1,26 @@
+name: Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  formula:
+    name: Install and test (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: Homebrew/actions/setup-homebrew@main
+      - run: brew trust --formula nasser1941/tap/lcode
+      - run: brew install --build-from-source nasser1941/tap/lcode
+      - run: brew test nasser1941/tap/lcode
+      - run: brew audit --strict --online nasser1941/tap/lcode
+      - run: lcode --version && lcode models

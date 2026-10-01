@@ -1,0 +1,71 @@
+name: Bump
+
+# Updates the formula to the newest lcode release that has been on PyPI for at least a day, after
+# installing and testing it on macOS and Linux. "Run workflow" with a version updates right away.
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "lcode version (default: the newest release that is at least a day old)"
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.update.outputs.changed }}
+      version: ${{ steps.update.outputs.version }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.14" # the formula's python@3.14, so pip resolves the same dependencies
+      - id: update
+        run: python scripts/update_formula.py ${{ inputs.version }}
+      - uses: actions/upload-artifact@v7
+        if: steps.update.outputs.changed == 'true'
+        with:
+          name: formula
+          path: Formula/lcode.rb
+
+  test:
+    needs: update
+    if: needs.update.outputs.changed == 'true'
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: Homebrew/actions/setup-homebrew@main
+      - uses: actions/download-artifact@v8
+        with:
+          name: formula
+          path: formula
+      - run: cp formula/lcode.rb "$(brew --repository nasser1941/tap)/Formula/lcode.rb"
+      - run: brew trust --formula nasser1941/tap/lcode
+      - run: brew install --build-from-source nasser1941/tap/lcode
+      - run: brew test nasser1941/tap/lcode
+      - run: brew audit --strict --online nasser1941/tap/lcode
+
+  commit:
+    needs: [update, test]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: formula
+          path: Formula
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "lcode ${{ needs.update.outputs.version }}"
+          git push
