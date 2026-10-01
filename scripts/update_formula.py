@@ -16,6 +16,7 @@ import os
 import re
 import subprocess
 import sys
+import time
 import urllib.request
 from pathlib import Path
 
@@ -109,7 +110,13 @@ def dependencies(version: str, cooldown: bool) -> list[tuple[str, str]]:
     ]
     if cooldown:
         command.insert(4, "--uploaded-prior-to=P1D")
-    result = subprocess.run(command, capture_output=True, text=True, check=False)
+    else:
+        command.insert(4, "--no-cache-dir")
+    for attempt in range(6):  # PyPI's index can lag a few minutes behind a release
+        result = subprocess.run(command, capture_output=True, text=True, check=False)
+        if result.returncode == 0 or "No matching distribution" not in result.stderr or cooldown:
+            break
+        time.sleep(30)
     if result.returncode != 0:
         raise SystemExit(f"pip couldn't resolve {PACKAGE}=={version}:\n{result.stderr.strip()}")
     report = result.stdout
