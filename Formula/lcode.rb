@@ -3,8 +3,8 @@ class Lcode < Formula
 
   desc "Local-first terminal coding agent powered by open-weight models via Ollama"
   homepage "https://nasser1941.github.io/lcode/"
-  url "https://files.pythonhosted.org/packages/85/ba/a64864914875e7ce89d6c4bdde156fcb492a9f3fbf0de49f37d0c3c34d9b/lcode_cli-0.49.0.tar.gz"
-  sha256 "38052c5dc866088d57be57db73865b603aae0280ea17f3fbd6f6635c44d96194"
+  url "https://files.pythonhosted.org/packages/9a/6c/25bfc4b33c690b4ccf562d1f8ac4c6ca27e5517dd53ec6c265dea69738d0/lcode_cli-0.49.1.tar.gz"
+  sha256 "26b19df7ec954de9f80bd32d3a35838fb7573e9897a4a29068dd166ba17ebada"
   license "MIT"
 
   depends_on "certifi"
@@ -57,8 +57,8 @@ class Lcode < Formula
   end
 
   resource "wcwidth" do
-    url "https://files.pythonhosted.org/packages/69/4a/82d61476a1ccc20d43d0805724c5de4baa4971131a8db1816705ef53fe16/wcwidth-0.9.3.tar.gz"
-    sha256 "dfe7cfbd4cb59db9fe0931bd6091ab4a95b3acc5d56bfb50fa9fef0ccba5dc5c"
+    url "https://files.pythonhosted.org/packages/ea/01/e5ac23733628a6bbb91913a765fcf55ee8070d8d991bc88fdaaf805052c7/wcwidth-0.9.4.tar.gz"
+    sha256 "fd8d57d3cdfe570e3265c8fab1885c24e34ef40889c0759c0c304a19e9835954"
   end
 
   def install
