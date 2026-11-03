@@ -3,8 +3,8 @@ class Lcode < Formula
 
   desc "Local-first terminal coding agent powered by open-weight models via Ollama"
   homepage "https://nasser1941.github.io/lcode/"
-  url "https://files.pythonhosted.org/packages/9f/42/5bb1eb3b83ab41ebe30f1ff6d34fde4d9d484c3c053ddb88895e1f2e9a84/lcode_cli-0.58.0.tar.gz"
-  sha256 "f706ba54b8af9f8e9e09a225ee036262f9ca8b0fbe4ac2d7534585ab7c03dfb8"
+  url "https://files.pythonhosted.org/packages/4d/5c/4a3f1733f772ac47f5e7c275c6a70262ce250251e87fdf9f1c63409b36cf/lcode_cli-0.59.0.tar.gz"
+  sha256 "17e6df972c05a67f2f8a5158dd3ee0cab3d493cce2a100c6d71131434573b4e8"
   license "MIT"
 
   depends_on "certifi"
