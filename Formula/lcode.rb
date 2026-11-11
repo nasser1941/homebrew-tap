@@ -3,8 +3,8 @@ class Lcode < Formula
 
   desc "Local-first terminal coding agent powered by open-weight models via Ollama"
   homepage "https://nasser1941.github.io/lcode/"
-  url "https://files.pythonhosted.org/packages/f0/c4/1d8c91c939463ca02189161666a67c5798a513fcfbce691a4e9f034276ec/lcode_cli-0.62.0.tar.gz"
-  sha256 "c606754a93fb1bc37165038b2281258ef2b03c567ac9264629c2501f330abe8e"
+  url "https://files.pythonhosted.org/packages/6e/71/f4c3328c232bf6e4153b25fe90f649648629fca9d28cd6c649c711ee0ed9/lcode_cli-0.63.0.tar.gz"
+  sha256 "ff554e833506eba9fd7bbfe3ed486049fe5cdcf031c60ce2037a9720c0b28e41"
   license "MIT"
 
   depends_on "certifi"
@@ -22,8 +22,8 @@ class Lcode < Formula
   end
 
   resource "markdown-it-py" do
-    url "https://files.pythonhosted.org/packages/06/ff/7841249c247aa650a76b9ee4bbaeae59370dc8bfd2f6c01f3630c35eb134/markdown_it_py-4.2.0.tar.gz"
-    sha256 "04a21681d6fbb623de53f6f364d352309d4094dd4194040a10fd51833e418d49"
+    url "https://files.pythonhosted.org/packages/16/fc/cee2c45553c9a9bf77d8b0c391560c556d7ed756b1f0bb35eb5d48db09ea/markdown_it_py-4.3.0.tar.gz"
+    sha256 "91a58fa5b72c71a40cf7177250fd767480d7a2bb3ac426ccfb76fb90305fdaaa"
   end
 
   resource "mdurl" do
