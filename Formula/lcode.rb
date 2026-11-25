@@ -3,8 +3,8 @@ class Lcode < Formula
 
   desc "Local-first terminal coding agent powered by open-weight models via Ollama"
   homepage "https://nasser1941.github.io/lcode/"
-  url "https://files.pythonhosted.org/packages/14/d9/553a20be1989be67c7f4024d366e7db2083974d55a189fe5d565f7baf590/lcode_cli-0.63.1.tar.gz"
-  sha256 "830279edd73e1f5e72deda2cbd5ce7711dac9c87848451d11a1e91d6d1321470"
+  url "https://files.pythonhosted.org/packages/eb/c4/4c90c926e0af2ea6cf5bb3d638a4e6098e66d8fb9bd93904695b24f6962e/lcode_cli-0.64.0.tar.gz"
+  sha256 "6f0bd09b7faffdc82a0bc1512865542e451457dedd915aab120f4c0d68ac57d8"
   license "MIT"
 
   depends_on "certifi"
@@ -12,8 +12,8 @@ class Lcode < Formula
   depends_on "ripgrep"
 
   resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/33/1c/f41d4e74c28ab327ff3acd36053f7ea506c55872d7a90b0fa71aa3ab0c89/charset_normalizer-3.5.2.tar.gz"
-    sha256 "39de2a259fc954455c57274dc94c79d5842774e1247a016aff30bc0efed0f4ef"
+    url "https://files.pythonhosted.org/packages/c2/c3/cae6d3bdefd96a941ffc247c714ac4babc488a69012e11c058f6c17c6c47/charset_normalizer-3.5.3.tar.gz"
+    sha256 "a250888753faa289e2997962fbb17c4960cbdb58575533ca6fceee68c224bdff"
   end
 
   resource "idna" do
@@ -57,8 +57,8 @@ class Lcode < Formula
   end
 
   resource "wcwidth" do
-    url "https://files.pythonhosted.org/packages/ea/01/e5ac23733628a6bbb91913a765fcf55ee8070d8d991bc88fdaaf805052c7/wcwidth-0.9.4.tar.gz"
-    sha256 "fd8d57d3cdfe570e3265c8fab1885c24e34ef40889c0759c0c304a19e9835954"
+    url "https://files.pythonhosted.org/packages/8e/da/d59374b2c893ae70a41fdb064637ccef218f25df8c67e5431a96708235d9/wcwidth-0.9.5.tar.gz"
+    sha256 "713534e2ecb16e0fc39f19e0a5dda997da76d010953e9e8f803e7971f8accd80"
   end
 
   def install
